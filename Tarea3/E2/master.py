@@ -2,6 +2,7 @@ import socket
 import pendulum
 import sys
 import time
+import copy
 
 # lista de  clientes a sincronizar(he utilizado mismo pc, con diferentes puertos)
 
@@ -30,7 +31,7 @@ def mediaRelojes(clocks):
 def ajusteReloj(clocks, received):
     
     #lista de relojes que han pasado el filtro de desvio
-    clocksFilter = clocks
+    clocksFilter = copy.deepcopy(clocks)
     #calculamos la media
     horaMedia = mediaRelojes(clocks)
     #eliminar horas muy desviadas
@@ -40,7 +41,7 @@ def ajusteReloj(clocks, received):
             print("!! Cliente descartado\t" + pendulum.from_timestamp(float(i)).to_time_string() )
             #recalcular media
             horaMedia = mediaRelojes(clocksFilter)
-            print("!! Hora media actualizada:\t" + pendulum.from_timestamp(float(i)).to_time_string() )
+            print("!! Hora media actualizada:\t" + pendulum.from_timestamp(horaMedia).to_time_string() )
     
     
     #calcular la correccion
@@ -73,7 +74,6 @@ clocks.append(horaInicioPeticion.timestamp())
 received.append(PUERTOESCUCHA)
 
 print("leyendo relojes...")
-time.sleep(2)
 for i in range(MAX_CLIENT):
    data, address = puertoEscucha.recvfrom(BUFFER_SIZE)
    timestampResponse = data.decode(CODING)
