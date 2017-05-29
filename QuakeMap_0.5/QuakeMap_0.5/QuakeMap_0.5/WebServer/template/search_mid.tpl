@@ -1,0 +1,1 @@
+<div class="form-group row"><div class="col-xs-7"><input placeholder="Nombre Ciudad" type="text" class="form-control" id="{{id}}"></input></div><div class="col-xs-4" ><input placeholder="Num" value=20 type="text" class="form-control" id="numPages"></input></div></div><div id="searchResult"></div>

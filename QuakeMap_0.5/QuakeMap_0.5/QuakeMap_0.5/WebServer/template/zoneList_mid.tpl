@@ -1,0 +1,1 @@
+<li><a onclick='cargar("{{url}}", "#contenido")'>{{name}}</a></li>

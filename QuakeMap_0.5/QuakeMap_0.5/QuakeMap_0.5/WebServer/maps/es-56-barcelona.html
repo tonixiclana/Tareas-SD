@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>Google Maps - pygmaps </title>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true_or_false"></script>
+<script type="text/javascript">
+	function initialize() {
+		var centerlatlng = new google.maps.LatLng(41.574550, 2.299150);
+		var myOptions = {
+			zoom: 8,
+			center: centerlatlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+var heatmap_points = [
+new google.maps.LatLng(42.166000, 3.218000),
+new google.maps.LatLng(40.337000, 0.764000),
+new google.maps.LatLng(40.339000, 0.780000),
+new google.maps.LatLng(40.345000, 0.790000),
+new google.maps.LatLng(40.329000, 0.786000),
+new google.maps.LatLng(41.832000, 2.842000),
+new google.maps.LatLng(41.405000, 3.072000),
+new google.maps.LatLng(41.980000, 2.560000),
+new google.maps.LatLng(41.863000, 2.592000),
+new google.maps.LatLng(41.861000, 2.583000),
+new google.maps.LatLng(41.867000, 2.623000),
+new google.maps.LatLng(42.020000, 2.420000),
+new google.maps.LatLng(41.860000, 2.596000),
+new google.maps.LatLng(42.080000, 2.520000),
+new google.maps.LatLng(41.841000, 2.631000),
+new google.maps.LatLng(41.990000, 2.560000),
+new google.maps.LatLng(41.890000, 2.560000),
+new google.maps.LatLng(41.865000, 2.581000),
+new google.maps.LatLng(41.834000, 2.644000),
+new google.maps.LatLng(41.787000, 2.861000),
+];
+
+var pointArray = new google.maps.MVCArray(heatmap_points);
+var heatmap;
+heatmap = new google.maps.visualization.HeatmapLayer({
+
+data: pointArray
+});
+heatmap.setMap(map);
+heatmap.set('threshold', 10);
+heatmap.set('radius', 10);
+heatmap.set('opacity', 0.600000);
+heatmap.set('dissipating', true);
+	}
+</script>
+</head>
+<body style="margin:0px; padding:0px;" onload="initialize()">
+	<div id="map_canvas" style="width: 100%; height: 100%;"></div>
+</body>
+</html>

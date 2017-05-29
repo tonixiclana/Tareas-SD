@@ -1,0 +1,57 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>Google Maps - pygmaps </title>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true_or_false"></script>
+<script type="text/javascript">
+	function initialize() {
+		var centerlatlng = new google.maps.LatLng(50.506950, -4.200750);
+		var myOptions = {
+			zoom: 8,
+			center: centerlatlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+var heatmap_points = [
+new google.maps.LatLng(48.739000, -4.593000),
+new google.maps.LatLng(51.363000, -4.164000),
+new google.maps.LatLng(50.382000, -6.040000),
+new google.maps.LatLng(50.346000, -4.512000),
+new google.maps.LatLng(49.891000, -4.222000),
+new google.maps.LatLng(51.089000, -2.980000),
+new google.maps.LatLng(51.089000, -2.980000),
+new google.maps.LatLng(51.700000, -3.255000),
+new google.maps.LatLng(51.552000, -3.205000),
+new google.maps.LatLng(49.731000, -5.177000),
+new google.maps.LatLng(51.836000, -3.540000),
+new google.maps.LatLng(49.911000, -5.435000),
+new google.maps.LatLng(49.950000, -5.631000),
+new google.maps.LatLng(49.984000, -3.792000),
+new google.maps.LatLng(51.291000, -3.418000),
+new google.maps.LatLng(50.180000, -4.186000),
+new google.maps.LatLng(49.962000, -5.303000),
+new google.maps.LatLng(50.580000, -2.643000),
+new google.maps.LatLng(48.985000, -5.900000),
+new google.maps.LatLng(51.578000, -3.039000),
+];
+
+var pointArray = new google.maps.MVCArray(heatmap_points);
+var heatmap;
+heatmap = new google.maps.visualization.HeatmapLayer({
+
+data: pointArray
+});
+heatmap.setMap(map);
+heatmap.set('threshold', 10);
+heatmap.set('radius', 10);
+heatmap.set('opacity', 0.600000);
+heatmap.set('dissipating', true);
+	}
+</script>
+</head>
+<body style="margin:0px; padding:0px;" onload="initialize()">
+	<div id="map_canvas" style="width: 100%; height: 100%;"></div>
+</body>
+</html>
